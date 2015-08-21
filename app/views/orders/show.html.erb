@@ -1,34 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Order %></h1>
+</div>
 
-<p>
-  <strong>Order:</strong>
-  <%= @order.order_id %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:order_id) %></dt>
+      <dd><pre class="prettyprint"><%= @order.order_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:fecha_emision) %></dt>
+      <dd><pre class="prettyprint"><%= @order.fecha_emision %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sub_total) %></dt>
+      <dd><pre class="prettyprint"><%= @order.sub_total %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:descuento) %></dt>
+      <dd><pre class="prettyprint"><%= @order.descuento %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:igv) %></dt>
+      <dd><pre class="prettyprint"><%= @order.igv %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:total) %></dt>
+      <dd><pre class="prettyprint"><%= @order.total %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Fecha emision:</strong>
-  <%= @order.fecha_emision %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              orders_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_order_path(@order), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              order_path(@order),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Sub total:</strong>
-  <%= @order.sub_total %>
-</p>
-
-<p>
-  <strong>Descuento:</strong>
-  <%= @order.descuento %>
-</p>
-
-<p>
-  <strong>Igv:</strong>
-  <%= @order.igv %>
-</p>
-
-<p>
-  <strong>Total:</strong>
-  <%= @order.total %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
