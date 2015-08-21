@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Product %></h1>
+</div>
 
-<p>
-  <strong>Product:</strong>
-  <%= @product.product_id %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:product_id) %></dt>
+      <dd><pre class="prettyprint"><%= @product.product_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @product.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:precio_unitario) %></dt>
+      <dd><pre class="prettyprint"><%= @product.precio_unitario %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:stock) %></dt>
+      <dd><pre class="prettyprint"><%= @product.stock %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              products_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_product_path(@product), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              product_path(@product),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<p>
-  <strong>Precio unitario:</strong>
-  <%= @product.precio_unitario %>
-</p>
-
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
