@@ -1,4 +1,5 @@
 ActiveAdmin.register Customer do
+  permit_params :customer_id, :razon_social, :ruc, :email
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
