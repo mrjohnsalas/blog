@@ -1,4 +1,5 @@
 ActiveAdmin.register Order do
+  permit_params :order_id, :fecha_emision, :sub_total, :descuento, :igv, :total
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
