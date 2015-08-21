@@ -1,24 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Customer -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Customer %></h1>
+</div>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @customer.customer_id %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:customer_id) %></dt>
+      <dd><pre class="prettyprint"><%= @customer.customer_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:razon_social) %></dt>
+      <dd><pre class="prettyprint"><%= @customer.razon_social %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ruc) %></dt>
+      <dd><pre class="prettyprint"><%= @customer.ruc %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:email) %></dt>
+      <dd><pre class="prettyprint"><%= @customer.email %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Razon social:</strong>
-  <%= @customer.razon_social %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              customers_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_customer_path(@customer), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              customer_path(@customer),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Ruc:</strong>
-  <%= @customer.ruc %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
